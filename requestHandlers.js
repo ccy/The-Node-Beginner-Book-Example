@@ -1,13 +1,13 @@
+var exec = require("child_process").exec;
+
 function start() {
   console.log("Request handler 'start' was called.");
+  var content = "empty";
+  exec("dir", function (error, stdout, stderr) {
+    content = stdout;
+  });
 
-  function sleep(milliSeconds) {
-     var startTime = new Date().getTime();
-     while (new Date().getTime() < startTime + milliSeconds);
-  }
-
-  sleep(10000);
-  return "Hello Start";
+  return content;
 }
 
 function upload() {
